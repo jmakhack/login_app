@@ -82,10 +82,6 @@ exports.resetFixture = function(req, res) {
 
 exports.runTests = function(req, res) {
   exec('npm test', function(err, stdout, stderr) {
-    if(err) {
-      return res.send(500, err);
-    } else {
-      res.send()
-    }
+    res.send({nrFailed: 11-parseInt(/(\d+) passing/.exec(stdout.toString())[1]), output: stdout, totalTests: 11});
   });
 };

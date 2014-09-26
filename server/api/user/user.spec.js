@@ -5,9 +5,6 @@ var app = require('../../app');
 var request = require('supertest');
 var controller = require('./user.controller');
 var assert = require('assert');
-exports.NUM_TESTS = 11;
-exports.testsPassed = 0;
-
 
 describe('POST /TESTAPI/resetFixture', function () {
   it('should clear db', function (done) {
