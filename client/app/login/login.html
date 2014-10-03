@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<script src="app/login/login.styles.js"></script>
+	</head>
+	<body ng-app="warmupApp">
+		<form ng-controller="UsersController as user">
+			<div id="error-message"></div>
+			<input id="username" name="username" type="text" placeholder="Username" ng-model="user.username">
+			<div id="userError"></div>
+			<br />
+			<input id="password" name="password" type="password" placeholder="Password" ng-model="user.password">
+			<div id="passError"></div>
+			<br />
+			<input id="login" type="button" value="Login" ng-click="user.login()">
+			<input id="add" type="button" value="Register" ng-click="user.add()">
+		</form>
+	</body>
+</html>

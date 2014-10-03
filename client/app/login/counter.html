@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="warmupApp">
+<head>
+	<title>Login</title>
+</head>
+<body>
+	<div ng-controller="UsersController as user">
+		<div>Welcome {{user.getUser()}}!</div>
+		<br />
+		<div>You have logged in {{user.getCount()}} times!</div>
+		<br />
+		<input id="logout" type="button" value="Logout" ng-click="user.logout()">
+	</div>
+</body>
+</html>
