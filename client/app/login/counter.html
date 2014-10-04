@@ -1,15 +1,101 @@
 <!DOCTYPE html>
 <html ng-app="warmupApp">
 <head>
-	<title>Login</title>
+	<title>Boba Central</title>
+	<style>
+  			body  {
+  				background-color: lightgreen; 
+  				font-family: Helvetica, Verdana, sans-serif, Arial;
+  				color: #fff
+  			}
+  			input {
+				padding: 5px 8px;
+				border: 2px solid #060;
+				color: #060;
+				border-radius: 5px
+			}
+			button {
+				padding: 6px 8px;
+				border: 2px solid #060;
+				color: #585;
+				border-radius: 5px;
+				background-color: #fff
+			}
+			button:hover {
+				background-color: #ddd
+			}
+			td {
+				padding: 10px 30px 10px 30px;
+				vertical-align: middle;
+				background-color: green;
+				border-radius: 20px;
+			}
+			#mainTable {
+				margin-top: 10%;
+				width: 800px;
+			}
+			.stamp {
+				width: 42px;
+				height: 42px;
+			}
+		</style>
+		<script type="text/javascript">
+			'use strict';
+			$(document).ready(function(){
+				var boba = ['milk tea', 'lychee black tea', 'lemon black tea', 'passionfruit green tea', 'jasmine green milk tea',
+							'oolong black tea', 'matcha latte', 'brown sugar milk tea', 'coffee milk tea', 'thai milk tea'];
+				var rand = Math.floor(Math.random() * 10);
+				$('#boba').html('Enjoy your ' + boba[rand] + ' boba!');
+			});
+		</script>
 </head>
 <body>
 	<div ng-controller="UsersController as user">
-		<div>Welcome {{user.getUser()}}!</div>
-		<br />
-		<div>You have logged in {{user.getCount()}} times!</div>
-		<br />
-		<input id="logout" type="button" value="Logout" ng-click="user.logout()">
+		{{user.stampCard(user.getCount()%10 === 0 ? 10 : user.getCount()%10)}}
+		<table id="mainTable" align="center">
+			<tr>
+				<td colspan="2">
+					<h1>~ Boba Central ~</h1>
+				</td>
+			</tr>
+			<tr>
+				<td width="40%">
+					<div>Welcome {{user.getCount() > 1 ? "back, " + user.getUser() : user.getUser()}}!</div>
+					<br />
+					<div>You have logged in {{user.getCount()}} times!</div>
+					<br />
+					<div id="boba"></div>
+					<br />
+					<button ng-click="user.logout()">Log Out</button>
+				</td>
+				<td align="center">
+					<div>You now have {{user.getCount()%10 === 0 ? 10 : user.getCount()%10}} stamps on your stamp card!</div>
+					<table width="90%">
+						<tr>
+							<td colspan="5" align="center">
+								<h3>{{user.getUser()}}'s Stamp Card</h3>
+							</td>
+						</tr>
+						<tr>
+							<td class="stamp" id="s0"></td>
+							<td class="stamp" id="s1"></td>
+							<td class="stamp" id="s2"></td>
+							<td class="stamp" id="s3"></td>
+							<td class="stamp" id="s4"></td>
+						</tr>
+						<tr>
+							<td class="stamp" id="s5"></td>
+							<td class="stamp" id="s6"></td>
+							<td class="stamp" id="s7"></td>
+							<td class="stamp" id="s8"></td>
+							<td class="stamp" id="s9"></td>
+						</tr>
+					</table>
+					<br />
+					<div id="bonus"></div>
+				</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

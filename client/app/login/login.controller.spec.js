@@ -1,5 +1,5 @@
 'use strict';
-
+/**
 describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
@@ -19,3 +19,4 @@ describe('Controller: LoginCtrl', function () {
     expect(1).toEqual(1);
   });
 });
+**/

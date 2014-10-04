@@ -1,20 +1,95 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Login</title>
-		<script src="app/login/login.styles.js"></script>
+		<title>Boba Central</title>
+		<style>
+  			body  {
+  				background-color: lightgreen; 
+  				font-family: Helvetica, Verdana, sans-serif, Arial;
+  				color: #fff
+  			}
+  			input {
+				padding: 5px 8px;
+				border: 2px solid #060;
+				color: #060;
+				border-radius: 5px
+			}
+			button {
+				padding: 6px 8px;
+				border: 2px solid #060;
+				color: #585;
+				border-radius: 5px;
+				background-color: #fff
+			}
+			button:hover {
+				background-color: #ddd
+			}
+			td {
+				padding: 10px 30px 10px 30px;
+				vertical-align: middle;
+				background-color: green;
+				border-radius: 20px;
+			}
+			#mainTable{
+				margin-top: 10%;
+				width: 800px;
+			}
+		</style>
+		<script type="text/javascript">
+			'use strict';
+			$(document).ready(function(){
+				//check that tbe username field contains a valid username
+				$('#username').blur(function(){
+					var username = $('#username').val();
+					if(username === undefined || username === '') {
+						$('#userError').html('Your username cannot be blank!');
+					} else if(username.length > 128) {
+						$('#userError').html('Username is too long!');
+					} else {
+						$('#userError').html('');
+					}
+				});
+				//check that the password field contains a valid password
+				$('#password').blur(function(){
+					var password = $('#password').val();
+					if(password !== undefined && password.length > 128) {
+						$('#passError').html('Password is too long!');
+					} else {
+						$('#passError').html('');
+					}
+				});
+			});
+		</script>
 	</head>
 	<body ng-app="warmupApp">
-		<form ng-controller="UsersController as user">
-			<div id="error-message"></div>
-			<input id="username" name="username" type="text" placeholder="Username" ng-model="user.username">
-			<div id="userError"></div>
-			<br />
-			<input id="password" name="password" type="password" placeholder="Password" ng-model="user.password">
-			<div id="passError"></div>
-			<br />
-			<input id="login" type="button" value="Login" ng-click="user.login()">
-			<input id="add" type="button" value="Register" ng-click="user.add()">
-		</form>
+		<table id="mainTable" align="center">
+			<tr>
+				<td colspan="2">
+					<h1>~ Boba Central ~</h1>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form ng-controller="UsersController as user">
+						<div id="error-message">&nbsp;</div>
+						<input id="username" type="text" placeholder="Username" ng-model="user.username">
+						<div style="font-size: 9px;" id="userError">&nbsp;</div>
+						<input id="password" type="password" placeholder="Password" ng-model="user.password">
+						<div style="font-size: 9px;" id="passError">&nbsp;</div>
+						<button ng-click="user.login()">Login</button>
+						<button ng-click="user.add()">Register</button>
+					</form>
+				</td>
+				<td>
+					<h2>Welcome to Boba Central!!! >.<</h2>
+					<p>
+						Register today for a new promotional stamp card!<br />
+						Each login boba purchase will add a stamp to your stamp card.<br />
+						After collecting 10 stamps, you get a special one-of-a-kind boba drink!!!<br />
+						Hope you enjoy! =]
+					</p>
+				</td>
+			</tr>
+		</table>
 	</body>
 </html>
